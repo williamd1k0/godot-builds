@@ -61,4 +61,4 @@ before_build:
 
 build_script:
   - cd godot
-  - scons -j6 platform=%GD_PLATFORM% target=%TARGET% tools=%TOOLS%
+  - scons platform=%GD_PLATFORM% target=%TARGET% tools=%TOOLS%
