@@ -42,36 +42,7 @@ environment:
       TOOLS: no
       TARGET: release_debug
       ARCH: x86
-    - VS: C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat
-      GD_PLATFORM: winrt
-      TOOLS: no
-      TARGET: release
-      ARCH: amd64
-    - VS: C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat
-      GD_PLATFORM: winrt
-      TOOLS: no
-      TARGET: release_debug
-      ARCH: amd64
-    - VS: C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat
-      GD_PLATFORM: winrt
-      TOOLS: no
-      TARGET: release
-      ARCH: x86
-    - VS: C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat
-      GD_PLATFORM: winrt
-      TOOLS: no
-      TARGET: release_debug
-      ARCH: x86
-    - VS: C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat
-      GD_PLATFORM: winrt
-      TOOLS: no
-      TARGET: release
-      ARCH: amd64_arm
-    - VS: C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat
-      GD_PLATFORM: winrt
-      TOOLS: no
-      TARGET: release_debug
-      ARCH: amd64_arm
+
 
 install:
   - SET "PATH=%PYTHON%;%PYTHON%\\Scripts;%PATH%"
@@ -90,13 +61,4 @@ before_build:
 
 build_script:
   - cd godot
-  - scons platform=%GD_PLATFORM% target=%TARGET% tools=%TOOLS%
-
-deploy:
-  description: 'Godot binaries deployed by Travis CI and AppVeyor'
-  provider: GitHub
-  auth_token:
-    secure: DYTTAkQFPIDq2YL6hPMOttlHdJ9ZL6dYdOtGFIEneO8BTYx6keJRvewsdzgP2QGA
-  artifact: GodotBinary
-  on:
-    appveyor_repo_tag: true
+  - scons -j6 platform=%GD_PLATFORM% target=%TARGET% tools=%TOOLS%
